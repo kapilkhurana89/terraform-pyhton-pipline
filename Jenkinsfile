@@ -3,23 +3,17 @@ pipeline {
 
     stages {
 
-        stage('Git Checkout') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/kapilkhurana89/terraform-pyhton-pipline.git'
+                git branch: 'main',
+                url: 'https://github.com/kapilkhurana89/terraform-pyhton-pipline.git'
             }
         }
 
-        stage('Check Python') {
+        stage('Run Python') {
             steps {
-                bat 'python --version'
+                bat 'python trigger.py'
             }
         }
-
-        stage('Run Python Script') {
-            steps {
-                bat 'py trigger.py'
-            }
-        }
-
     }
 }
