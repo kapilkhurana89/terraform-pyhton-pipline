@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        python 'Python'
+        python 'Py'
     }
 
     stages {
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Run Python Trigger') {
             steps {
-                bat 'python trigger.py'
+                bat 'py trigger.py'
             }
         }
     }
