@@ -1,41 +1,25 @@
 pipeline {
     agent any
 
-    tools {
-        python 'Py'
-    }
-
     stages {
 
-        stage('Checkout Code') {
+        stage('Git Checkout') {
             steps {
-                git branch: 'main',
-                url: 'YOUR_GITHUB_REPO_URL'
+                git 'https://github.com/kapilkhurana89/terraform-pyhton-pipline.git'
             }
         }
 
-        stage('Verify Tools') {
+        stage('Check Python') {
             steps {
-                bat 'terraform -version'
                 bat 'python --version'
-                bat 'aws --version'
             }
         }
 
-        stage('Run Python Trigger') {
+        stage('Run Python Script') {
             steps {
                 bat 'py trigger.py'
             }
         }
-    }
 
-    post {
-        success {
-            echo 'Terraform Infrastructure Created Successfully'
-        }
-
-        failure {
-            echo 'Pipeline Failed'
-        }
     }
 }
