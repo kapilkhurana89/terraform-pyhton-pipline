@@ -1,22 +1,12 @@
-import subprocess
+import os
 
-
-def run_command(command):
-    result = subprocess.run(command,shell=True)
-
-    if result.returncode != 0:
-       print(f"Error running: {command}")
-       exit(1)
+terraform = r"C:\terraform\terraform.exe"
 
 print("Initializing Terraform...")
-run_command("terraform init")
+os.system(f'"{terraform}" init')
 
-print("Planning Infrastructure...")
-run_command("terraform plan")
+print("Planning Terraform...")
+os.system(f'"{terraform}" plan')
 
-print("Applying Infrastructure...")
-run_command("terraform apply -auto-approve")
-
-print("EC2 Instance Created Successfully")
-
-    
+print("Applying Terraform...")
+os.system(f'"{terraform}" apply -auto-approve')
