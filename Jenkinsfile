@@ -2,9 +2,17 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/kapilkhurana89/terraform-pyhton-pipline.git'
+            }
+        }
+
         stage('Run Python') {
             steps {
-                bat 'C:\\Python313\\python.exe trigger.py'
+                bat '"C:\\Users\\kapil\\AppData\\Local\\Python\\bin\\python.exe" trigger.py'
             }
         }
     }
