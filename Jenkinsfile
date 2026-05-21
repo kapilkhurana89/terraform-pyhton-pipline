@@ -12,7 +12,7 @@ pipeline {
 
         stage('Run Python') {
             steps {
-                bat 'python trigger.py'
+                bat 'py trigger.py'
             }
         }
     }
